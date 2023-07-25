@@ -17,7 +17,7 @@ export const actions = {
 			)
 				.map((b) => b.toString(16).padStart(2, '0'))
 				.join('');
-			await event.platform?.env.SVELTE_D1.prepare('INSERT INTO Users VALUES (?, ?)')
+			await event.platform?.env.SVELTE_DB.prepare('INSERT INTO Users VALUES (?, ?)')
 				.bind(username, hash)
 				.all();
 		});
