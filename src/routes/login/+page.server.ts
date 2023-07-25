@@ -17,7 +17,9 @@ export const actions = {
 			)
 				.map((b) => b.toString(16).padStart(2, '0'))
 				.join('');
-			console.log(event.platform?.env.SVELTE_D1);
+			await event.platform?.env.SVELTE_D1.prepare('INSERT INTO Users VALUES (?, ?)')
+				.bind(username, hash)
+				.all();
 		});
 	}
 };

@@ -7,7 +7,7 @@ declare global {
 		// interface PageData {}
 		interface Platform {
 			env?: {
-				SVELTE_D1: D1Namespace;
+				SVELTE_DB: D1Namespace;
 			};
 		}
 	}

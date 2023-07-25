@@ -9,11 +9,9 @@
 </svelte:head>
 
 <section>
-
 	<h1>
 		Login
 	</h1>
-
 	<h2>
 		<form method="POST" action="/login?/register">
 			<label for="username">username:</label>
