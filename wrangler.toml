@@ -1,0 +1,8 @@
+name = "auth-pages-test"
+compatibility_date = "2023-07-17"
+
+
+[[d1_databases]]
+binding = "SVELTE_DB"
+database_name = "authpage-db"
+database_id = "01cd8013-02d4-484c-a0b7-589236d14220"
