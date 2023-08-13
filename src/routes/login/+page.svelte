@@ -15,6 +15,20 @@
 	</h1>
 
 	<h2>
+		<form method="POST" action="/login?/login">
+			<label for="username">username:</label>
+			<input type="text" name="username" id="username">
+			<label for="password">password:</label>
+			<input type="password" name="password" id="password">
+			<button>submit</button>
+		</form>
+	</h2>
+
+	<h1>
+		Register
+	</h1>
+
+	<h2>
 		<form method="POST" action="/login?/register">
 			<label for="username">username:</label>
 			<input type="text" name="username" id="username">
