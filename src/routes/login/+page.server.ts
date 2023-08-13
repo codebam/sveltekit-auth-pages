@@ -43,10 +43,10 @@ export const actions = {
 	register: async (event: any) => {
 		const result = await event.request.formData();
 		const username = result.get('username');
-		const password = result.get('password');
-		const hash = Array.from(
+		const raw_password = result.get('password');
+		const password = Array.from(
 			new Uint8Array(
-				await crypto.subtle.digest('SHA-512', new TextEncoder().encode(String(password)))
+				await crypto.subtle.digest('SHA-512', new TextEncoder().encode(String(raw_password)))
 			)
 		)
 			.map((b) => b.toString(16).padStart(2, '0'))
@@ -56,7 +56,10 @@ export const actions = {
 			'CREATE TABLE IF NOT EXISTS Users (id TEXT PRIMARY KEY, username TEXT, password TEXT)'
 		).all();
 		await event.platform?.env.SVELTE_DB.prepare('INSERT INTO Users VALUES (?, ?, ?)')
-			.bind(id, username, hash)
+			.bind(id, username, password)
 			.all();
+		event.cookies.set('session', JSON.stringify({ username, password }), {
+			path: '/'
+		});
 	}
 };
